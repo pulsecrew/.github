@@ -8,18 +8,18 @@ Instead of juggling five different apps for diet, fitness, sleep, and health tra
 
 ## Agents
 
+All agents run inside [OpenClaw AI](https://openclaw.ai) as isolated multi-agent sessions. The Coach is the default contact — it handles triage and accountability, spawning specialists as needed.
+
 | Agent | Role |
 |-------|------|
-| Orchestrator | Routes requests and aggregates responses across all agents |
+| Coach | Default contact, triage/routing, check-ins, streaks, and motivation |
 | Chef / Dietician | Grocery deals, recipes, and meal planning |
 | Personal Trainer | Workout plans and progress tracking |
-| Health Advisor | Apple Health analysis and trend detection |
-| Sleep Coach | Sleep quality and training/diet correlations |
-| Accountability Partner | Check-ins, streaks, and motivation |
+| Health Advisor | Apple Health analysis, trend detection, and sleep |
 
 ## Stack
 
-Built on top of [OpenClaw AI](https://openclaw.ai) for agent infrastructure, gateway, and multi-channel messaging (WhatsApp, Telegram, Slack, Discord, etc.). The backend is TypeScript/Hono with a PostgreSQL + pgvector knowledge store, and a mobile app built with Expo.
+Built on top of [OpenClaw AI](https://openclaw.ai) as the agent runtime — OpenClaw runs the agents, manages tool-calling loops, and handles multi-channel messaging (WhatsApp, Telegram, Slack, Discord, etc.). Agents call a TypeScript/Hono data API (Relay) for reads/writes to PostgreSQL + pgvector. Mobile app built with Expo.
 
 Grocery deals are fetched by a standalone **flyers microservice** (TypeScript/Hono) that queries Flipp's backend API and uses Claude Haiku vision as a fallback for price extraction.
 
