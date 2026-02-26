@@ -21,6 +21,8 @@ Instead of juggling five different apps for diet, fitness, sleep, and health tra
 
 Built on top of [OpenClaw AI](https://openclaw.ai) for agent infrastructure, gateway, and multi-channel messaging (WhatsApp, Telegram, Slack, Discord, etc.). The backend is FastAPI with a PostgreSQL + pgvector knowledge store, and a mobile app built with Expo.
 
+Grocery deals are fetched by a standalone **flyers microservice** (TypeScript/Hono) that queries Flipp's backend API and uses Claude Haiku vision as a fallback for price extraction.
+
 ## Documentation
 
 Full documentation is in the [`docs/`](../docs/README.md) folder, covering agents, infrastructure, and the roadmap.
